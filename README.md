@@ -1,0 +1,6 @@
+- npm install [package-name] - to install dependencies.
+- npm uninstall [package-name] - to uninstall dependencies.
+- npm run dev - only works when the scripts field in package.json has a dev command. It runs the command defined there.
+- npm start - only works when the scripts field in package.json has a start command. It runs the command defined there.
+- main of package.json specifies the entry point of the application (e.g., "main": "index.js or "main": "src/index.js").
+- npx gitignore node - to generate a .gitignore file for Node.js projects.
