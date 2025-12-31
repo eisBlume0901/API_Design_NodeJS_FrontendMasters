@@ -1,10 +1,34 @@
-  {
-  "name": "API_Design_NodeJS_FrontendMasters",
+{
+  "name": "api_design_nodejs_frontendmasters",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "description": "1. First step when cloning or collaborating with other developers, run npm install - this will install all dependencies listed in package.json.\r 2. To start the development server, run the following command:\r    ```\r    npm start\r    ```\r    This will start the server and you can view the application in your web browser at http://localhost:3000.",
+  "keywords": [
+    "habit-tracker",
+    "api",
+    "nodejs",
+    "express",
+    "drizzle"
+  ],
+  "homepage": "https://github.com/eisBlume0901/API_Design_NodeJS_FrontendMasters#readme",
+  "bugs": {
+    "url": "https://github.com/eisBlume0901/API_Design_NodeJS_FrontendMasters/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eisBlume0901/API_Design_NodeJS_FrontendMasters.git"
+  },
+  "license": "MIT",
+  "author": "eisBlume0901",
+  "type": "module",
+  "main": "src/index.ts",
   "scripts": {
+    "dev": "node --watch src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "private": true
+  "dependencies": {
+    "drizzle-zod": "^0.8.3",
+    "express": "^5.2.1",
+    "ts-node": "^10.9.2"
+  }
 }
