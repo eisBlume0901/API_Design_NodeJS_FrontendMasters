@@ -27,7 +27,8 @@ Terms Learned:
 
 IMPORTANT 
 1. Route order matters, the specific routes should be defined before the general ones to prevent unintended matches.
+- /profile is more specific to /:id because profile matches to exactly one literal path segment while :id can match any value.
 2. Node requires explicit file extensions when using ES modules (like putting .ts at the end of the import)
 3. Nesting routes by using other's routers, for instance habitRouter is nested inside userRouter 
 - child router like habitRouter can access parameters defined in the parent router like userId from userRouter
-
+4. Async/Await should be handled properly by implementing try/catch blocks to manage errors effectively.
