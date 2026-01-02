@@ -1,4 +1,5 @@
 - Notes: https://api-design-with-node-v5.super.site/
+
 - npm install [package-name] - to install dependencies.
 - npm uninstall [package-name] - to uninstall dependencies.
 - npm run dev - only works when the scripts field in package.json has a dev command. It runs the command defined there.
@@ -7,7 +8,24 @@
 - npx gitignore node - to generate a .gitignore file for Node.js projects.
 - npm install -D typescript @types/node - to install TypeScript and Node.js type definitions as development dependencies.
 - npx tsc --init - to create a tsconfig.json file for TypeScript configuration.
-- Test related commands:
+
+Test related commands:
 - npm install -D supertest @types/supertest - the -D flag installs supertest as a development dependency, supertest is used for testing HTTP servers.
 - npm install -D jest @types/jest ts-jest - to install Jest testing framework, its TypeScript type definitions, and ts-jest for running TypeScript tests with Jest as development dependencies.
 - npm install -D vitest 
+
+Terms Learned:
+1. Payload 
+- data sent by the client to the server in an HTTP request, typically in 
+- the body of POST, PUT, or PATCH requests
+- can include JSON, XML, form data, or binary data
+2. Server Hanging
+- issue when the server does not exit or stop responding because the process still has 
+- something keeping the event loop alive, or it is stuck waiting forever
+- in relation to http verbs, it can happen if there are open connections or pending requests that prevent the server from shutting down properly.
+
+
+IMPORTANT
+- if there are same HTTP verb and same path, the FIRST one will be executed
+- This is a typical behavior in web frameworks where the first matching route is prioritized.
+
