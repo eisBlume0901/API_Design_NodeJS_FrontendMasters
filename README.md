@@ -1,3 +1,4 @@
+- Notes: https://api-design-with-node-v5.super.site/
 - npm install [package-name] - to install dependencies.
 - npm uninstall [package-name] - to uninstall dependencies.
 - npm run dev - only works when the scripts field in package.json has a dev command. It runs the command defined there.
@@ -6,3 +7,7 @@
 - npx gitignore node - to generate a .gitignore file for Node.js projects.
 - npm install -D typescript @types/node - to install TypeScript and Node.js type definitions as development dependencies.
 - npx tsc --init - to create a tsconfig.json file for TypeScript configuration.
+- Test related commands:
+- npm install -D supertest @types/supertest - the -D flag installs supertest as a development dependency, supertest is used for testing HTTP servers.
+- npm install -D jest @types/jest ts-jest - to install Jest testing framework, its TypeScript type definitions, and ts-jest for running TypeScript tests with Jest as development dependencies.
+- npm install -D vitest 

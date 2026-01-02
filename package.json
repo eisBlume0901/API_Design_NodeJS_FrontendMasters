@@ -24,7 +24,9 @@
   "main": "src/index.ts",
   "scripts": {
     "dev": "node --watch src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "custom-env": "^2.0.6",
@@ -36,7 +38,11 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
-    "typescript": "^5.9.3"
+    "@types/supertest": "^6.0.3",
+    "supertest": "^7.1.4",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.16"
   }
 }
