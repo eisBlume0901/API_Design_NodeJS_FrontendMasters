@@ -6,6 +6,16 @@ import userRoutes from "./routes/userRoutes.ts";
 
 const app = express()
 
+// Any incoming request that are gibberish or do not match defined routes
+// will be caught by this middleware and return a 404 Not Found response
+app.use("/*", (req, res) => {
+    res.status(404).json({
+        error: "Not Found",
+        message: `Cannot ${req.method} ${req.originalUrl}`,
+        timestamp: new Date().toISOString()
+    })
+})
+
 app.get("/health", (req, res) => {
     res.status(200).json({
         status: "OK",

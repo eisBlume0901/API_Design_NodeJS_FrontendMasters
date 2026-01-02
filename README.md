@@ -25,7 +25,9 @@ Terms Learned:
 - in relation to http verbs, it can happen if there are open connections or pending requests that prevent the server from shutting down properly.
 
 
-IMPORTANT
-- if there are same HTTP verb and same path, the FIRST one will be executed
-- This is a typical behavior in web frameworks where the first matching route is prioritized.
+IMPORTANT 
+1. Route order matters, the specific routes should be defined before the general ones to prevent unintended matches.
+2. Node requires explicit file extensions when using ES modules (like putting .ts at the end of the import)
+3. Nesting routes by using other's routers, for instance habitRouter is nested inside userRouter 
+- child router like habitRouter can access parameters defined in the parent router like userId from userRouter
 
