@@ -33,7 +33,11 @@ const envSchema = z.object({
 
     // DATABASE_URL: z.string().startsWith("postgresql://"),
     // DATABASE_POOL_MIN: z.coerce.number().positive().default(2),
-    // DATABASE_POOL_MAX: z.coerce.number().positive().default(10),
+    // DATABASE_POOL_MAX: z.coerce
+    //     .number()
+    //     .positive()
+    //     .default(isProduction ? 50 : 10), // More connections in prod
+
 
     // JWT_SECRET: z.string().min(32, "JWT_SECRET must be at least 32 characters long"),
     // JWT_EXPIRES_IN: z.string().default("7d"),
@@ -55,6 +59,11 @@ const envSchema = z.object({
     // LOG_LEVEL: z
     //     .enum(["error", "warn", "info", "debug"])
     //     .default(isProduction ? "info" : "debug")
+
+    // RATE_LIMIT_WINDOW: z.coerce
+    //     .number()
+    //     .positive()
+    //     .default(isProduction ? 900000 : 60000), // 15min prod, 1min dev
 })
 
 export type Env = z.infer<typeof envSchema>
