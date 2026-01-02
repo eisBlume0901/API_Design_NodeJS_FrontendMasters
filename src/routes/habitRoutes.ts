@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
     res.json({ message: "Here is your list of habits!" }).status(200)
 })
 
-router.get(":/id", (req, res) => {
+router.get("/:id", (req, res) => {
     res.json({ message: "Here is the specific habit details!"}).status(201)
 })
 
