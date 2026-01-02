@@ -1,6 +1,6 @@
-// @ts-ignore
 import { app } from "./server.ts"
+import { env } from "../env.ts"
 
-app.listen(3001, () => {
-    console.log("Server is running on http://localhost:3001")
+app.listen(env.PORT, () => {
+    console.log(`Server is running on http://localhost:${env.PORT}`)
 })

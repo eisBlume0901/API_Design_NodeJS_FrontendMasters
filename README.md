@@ -4,3 +4,5 @@
 - npm start - only works when the scripts field in package.json has a start command. It runs the command defined there.
 - main of package.json specifies the entry point of the application (e.g., "main": "index.js or "main": "src/index.js").
 - npx gitignore node - to generate a .gitignore file for Node.js projects.
+- npm install -D typescript @types/node - to install TypeScript and Node.js type definitions as development dependencies.
+- npx tsc --init - to create a tsconfig.json file for TypeScript configuration.
