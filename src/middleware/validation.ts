@@ -16,7 +16,7 @@ export const validateBody = (schema: ZodSchema) => {
                 return res
                     .status(400)
                     .json({
-                        error: "Something went wrong during validation",
+                        error: "Something went wrong during request validation",
                         details: z.flattenError(e)
                     })
             }
@@ -25,3 +25,39 @@ export const validateBody = (schema: ZodSchema) => {
     }
 }
 
+export const validateParams = (schema: ZodSchema) => {
+    return (req: Request, res: Response, next: NextFunction) => {
+        try {
+            schema.parse(req.params)
+            next()
+        } catch (e) {
+            if (e instanceof z.ZodError) {
+                return res
+                    .status(400)
+                    .json({
+                        error: "Something went wrong during params validation",
+                        details: z.flattenError(e)
+                    })
+            }
+            next(e)
+        }
+    }
+}
+
+export const validateQuery = (schema: ZodSchema) => {
+    return (req: Request, res: Response, next: NextFunction) => {
+        try {
+            schema.parse(req.query)
+            next()
+        } catch (e) {
+            if (e instanceof z.ZodError) {
+                return res
+                    .status(400)
+                    .json({
+                        error: "Something went wrong during query validation",
+                        detail: z.flattenError(e)
+                    })
+            }
+        }
+    }
+}
