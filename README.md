@@ -23,6 +23,13 @@ Terms Learned:
 - issue when the server does not exit or stop responding because the process still has 
 - something keeping the event loop alive, or it is stuck waiting forever
 - in relation to http verbs, it can happen if there are open connections or pending requests that prevent the server from shutting down properly.
+3. Middleware
+- functions that have access to the request and response objects in an Express application
+- can modify the request and response objects, end the request-response cycle, or call the next middleware in the stack
+- commonly used for tasks like logging, authentication, error handling, and parsing request bodies
+- a router handler can return a JSON response (expected response from the client) and a plain return statement 
+- (but this is not gonna be a response requested from the client but only for internal use within the server,
+- like returning data to be used by other middleware or functions)
 
 
 IMPORTANT 
@@ -32,3 +39,22 @@ IMPORTANT
 3. Nesting routes by using other's routers, for instance habitRouter is nested inside userRouter 
 - child router like habitRouter can access parameters defined in the parent router like userId from userRouter
 4. Async/Await should be handled properly by implementing try/catch blocks to manage errors effectively.
+5. Request/Respond - can only respond to one request and a request can only get one response. 
+6. .json() vs .send() + .setHeader - .json() automatically sets the Content-Type header to application/json and serializes the object to a JSON string.
+
+
+Project Initialization
+1. Install necessary packages and dependencies
+- can separate dev dependencies and regular dependencies (package.json)
+2. Structure the project directories and files
+- Route Organization Strategies
+- GitHub Branch Strategies and Workflows
+- Environment Variables Management (with Zod for validation)
+- Separate environment for development, test, and production
+3. Setup Gitignore
+4. Setup TypeScript configuration (tsconfig.json)
+5. Setup package.json scripts
+- npm run dev - to start the development server with automatic restarts on file changes
+- npm start - to start the production server
+- npm test - to run the test suite
+
