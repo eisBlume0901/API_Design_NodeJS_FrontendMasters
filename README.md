@@ -12,7 +12,12 @@
 Test related commands:
 - npm install -D supertest @types/supertest - the -D flag installs supertest as a development dependency, supertest is used for testing HTTP servers.
 - npm install -D jest @types/jest ts-jest - to install Jest testing framework, its TypeScript type definitions, and ts-jest for running TypeScript tests with Jest as development dependencies.
-- npm install -D vitest 
+- npm install -D vitest
+
+Middleware related commands
+- npm install helmet - helmet helps secure Express apps by setting various HTTP headers.
+- npm install cors - to enable Cross-Origin Resource Sharing (CORS) in Express applications.
+- npm install morgan - morgan is an HTTP request logger middleware for Node.js applications (logger means it logs requests to the console or a file for debugging and monitoring purposes).
 
 Terms Learned:
 1. Payload 
@@ -27,9 +32,8 @@ Terms Learned:
 - functions that have access to the request and response objects in an Express application
 - can modify the request and response objects, end the request-response cycle, or call the next middleware in the stack
 - commonly used for tasks like logging, authentication, error handling, and parsing request bodies
-- a router handler can return a JSON response (expected response from the client) and a plain return statement 
-- (but this is not gonna be a response requested from the client but only for internal use within the server,
-- like returning data to be used by other middleware or functions)
+- a router handler can return a JSON response (expected response from the client) and a plain "return" statement 
+- (which is used to stop further execution of code in that handler opposite to next() which passes control to the next middleware)
 
 
 IMPORTANT 
@@ -41,6 +45,9 @@ IMPORTANT
 4. Async/Await should be handled properly by implementing try/catch blocks to manage errors effectively.
 5. Request/Respond - can only respond to one request and a request can only get one response. 
 6. .json() vs .send() + .setHeader - .json() automatically sets the Content-Type header to application/json and serializes the object to a JSON string.
+7. .next() - used to pass control to the next middleware function in the stack (useful for chaining multiple middleware functions together)
+9. Passing an argument to next() indicates an error occurred and skips all remaining non-error handling middleware, passing control to the error-handling middleware.
+10. A handler should always end with return or next() to prevent hanging requests.
 
 
 Project Initialization
