@@ -34,7 +34,10 @@ Terms Learned:
 - commonly used for tasks like logging, authentication, error handling, and parsing request bodies
 - a router handler can return a JSON response (expected response from the client) and a plain "return" statement 
 - (which is used to stop further execution of code in that handler opposite to next() which passes control to the next middleware)
-
+4. CORS Preflight
+- an initial request made by the browser using the OPTIONS HTTP verb to determine if the actual request is safe to send to the server
+6. High Order Function
+- a function that takes another function as an argument or returns a function as its result
 
 IMPORTANT 
 1. Route order matters, the specific routes should be defined before the general ones to prevent unintended matches.
@@ -48,6 +51,7 @@ IMPORTANT
 7. .next() - used to pass control to the next middleware function in the stack (useful for chaining multiple middleware functions together)
 9. Passing an argument to next() indicates an error occurred and skips all remaining non-error handling middleware, passing control to the error-handling middleware.
 10. A handler should always end with return or next() to prevent hanging requests.
+11. CORS is only relevant to browsers, not server-to-server communication or tools like terminals like Postman.
 
 
 Project Initialization
