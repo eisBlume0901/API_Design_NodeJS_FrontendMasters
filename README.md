@@ -77,7 +77,7 @@ Project Initialization
 2. Structure the project directories and files
 - Route Organization Strategies
 - GitHub Branch Strategies and Workflows
-- Environment Variables Management (with Zod for validation)
+- Environment Variables Management (with Zod for RUNTIME validation)
 - Separate environment for development, test, and production
 3. Setup Gitignore
 4. Setup TypeScript configuration (tsconfig.json)
@@ -89,4 +89,9 @@ Project Initialization
 
 Database-Related Commands and Notes with Neon Postgres
 - Migrations is a database version control
-- 
+- Create a new folder called db and create a schema.ts
+- Import pgTableCreator to create tables and also import other data types
+- Use Drizzle ORM because it's syntax is aligned with typescript/javascript structure
+- Use Relations to Join two or more different tables (by specifying if it is one-to-one, one-to-many, many-to-many)
+- Zod checks runtime validation (validated data at real time - running)
+- TypeScript checks compile time validation
