@@ -38,7 +38,7 @@ app.get("/health", (req, res) => {
 })
 
 // Decoupled routes - imported from separate modules (useful for larger applications because
-// it keeps the main server file clean and organized)
+// it keeps the mai     n server file clean and organized)
 // Decoupled means that the route definitions are not tied directly to the main server file
 app.use("/auth", authRoutes)
 app.use("/habits", habitRoutes)

@@ -86,3 +86,7 @@ Project Initialization
 - npm start - to start the production server
 - npm test - to run the test suite
 
+
+Database-Related Commands and Notes with Neon Postgres
+- Migrations is a database version control
+- 
