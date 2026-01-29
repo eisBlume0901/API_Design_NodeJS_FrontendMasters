@@ -31,7 +31,7 @@ const envSchema = z.object({
     // Coerce is type casting from string to number
     PORT: z.coerce.number().positive().default(3000),
 
-    // DATABASE_URL: z.string().startsWith("postgresql://"),
+    DATABASE_URL: z.string().startsWith("postgresql://"),
     // DATABASE_POOL_MIN: z.coerce.number().positive().default(2),
     // DATABASE_POOL_MAX: z.coerce
     //     .number()

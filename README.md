@@ -9,7 +9,9 @@
 - npx gitignore node - to generate a .gitignore file for Node.js projects.
 - npm install -D typescript @types/node - to install TypeScript and Node.js type definitions as development dependencies.
 - npx tsc --init - to create a tsconfig.json file for TypeScript configuration.
-
+- npm install @epic-web/remember - 
+- npm install -D drizzle-kit - to install drizzle-kit as a dev dependency (since we are using it to test database CRUD)
+- npm install drizzle-orm - to install drizzle-orm
 
 Test related commands:
 - npm install -D supertest @types/supertest - the -D flag installs supertest as a development dependency, supertest is used for testing HTTP servers.
@@ -69,7 +71,13 @@ IMPORTANT
 16. Handling async/await (such as databases or schedulers) 
 - can create one async handler (OOP concept is Factory) for all since creating each try/catch is repetitive
 17. Handling background work (asynchronous) after responding a request can cause race conditions
-
+18. Create a script for db too (see package.json) to easily call (by shortening its command or making a command familiar with you) database related commands like generate and seed
+- "db:generate": "drizzle-kit generate", - responsible for generating migration files
+- "db:push": "drizzle-kit push", - pushes the current schema directly to the database (no migrations)
+- "db:migrate": "drizzle-kit migrate", - runs generated migrations against the database
+- "db:studio": "drizzle-kit studio", - opens Drizzle Studio to inspect and manage database
+- "db:seed": "node src/db/seed.ts", - populate the database schemas with an initial/dummy/test data (create seed.ts first)
+- Make sure that you have drizzle.config.ts and the imports are installed so that there will be no issues
 
 Project Initialization
 1. Install necessary packages and dependencies
@@ -95,3 +103,9 @@ Database-Related Commands and Notes with Neon Postgres
 - Use Relations to Join two or more different tables (by specifying if it is one-to-one, one-to-many, many-to-many)
 - Zod checks runtime validation (validated data at real time - running)
 - TypeScript checks compile time validation
+- Use Pooling to establish pre-existing connection for better performance and scalability and reduce connection overhead per request
+- Disadvantages of pooling: every restart of the development server it would cause a new pool and old pool would still exists
+- @epic-web/remember allows us to use remember() function which acts as a singleton cache 
+- A singleton cahce is a pattern where you keep one shared instance of some cached value for the entire running process,
+- instead of recreating it on every import/reload/call
+- Database pooling is not the same as caching (It is only focused on connection reuse not caching)
