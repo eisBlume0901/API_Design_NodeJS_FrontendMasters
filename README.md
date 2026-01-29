@@ -72,9 +72,12 @@ IMPORTANT
 - can create one async handler (OOP concept is Factory) for all since creating each try/catch is repetitive
 17. Handling background work (asynchronous) after responding a request can cause race conditions
 18. Create a script for db too (see package.json) to easily call (by shortening its command or making a command familiar with you) database related commands like generate and seed
-- "db:generate": "drizzle-kit generate", - responsible for generating migration files
+- "db:generate": "drizzle-kit generate", - compares current Drizzle schema to the last known state and writes migrations to migrations folder
+- useful for database versioning
 - "db:push": "drizzle-kit push", - pushes the current schema directly to the database (no migrations)
+- useful for prototyping and quick iteration
 - "db:migrate": "drizzle-kit migrate", - runs generated migrations against the database
+- db:generate -> db:migrate to properly create a database versioning and populate the database with the schema
 - "db:studio": "drizzle-kit studio", - opens Drizzle Studio to inspect and manage database
 - "db:seed": "node src/db/seed.ts", - populate the database schemas with an initial/dummy/test data (create seed.ts first)
 - Make sure that you have drizzle.config.ts and the imports are installed so that there will be no issues
@@ -106,6 +109,6 @@ Database-Related Commands and Notes with Neon Postgres
 - Use Pooling to establish pre-existing connection for better performance and scalability and reduce connection overhead per request
 - Disadvantages of pooling: every restart of the development server it would cause a new pool and old pool would still exists
 - @epic-web/remember allows us to use remember() function which acts as a singleton cache 
-- A singleton cahce is a pattern where you keep one shared instance of some cached value for the entire running process,
+  - A singleton cache is a pattern where you keep one shared instance of some cached value for the entire running process,
 - instead of recreating it on every import/reload/call
 - Database pooling is not the same as caching (It is only focused on connection reuse not caching)
