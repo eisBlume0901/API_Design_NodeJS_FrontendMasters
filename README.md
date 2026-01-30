@@ -9,9 +9,11 @@
 - npx gitignore node - to generate a .gitignore file for Node.js projects.
 - npm install -D typescript @types/node - to install TypeScript and Node.js type definitions as development dependencies.
 - npx tsc --init - to create a tsconfig.json file for TypeScript configuration.
-- npm install @epic-web/remember - 
+- npm install @epic-web/remember - to install @epic-web/remember package for singleton caching (caching database connection as pool)
 - npm install -D drizzle-kit - to install drizzle-kit as a dev dependency (since we are using it to test database CRUD)
 - npm install drizzle-orm - to install drizzle-orm
+- npm install bcrypt - to install bcrypt for password hashing
+- npm install @types/bcrypt - to install TypeScript type definitions for bcrypt
 
 Test related commands:
 - npm install -D supertest @types/supertest - the -D flag installs supertest as a development dependency, supertest is used for testing HTTP servers.
@@ -78,9 +80,13 @@ IMPORTANT
 - useful for prototyping and quick iteration
 - "db:migrate": "drizzle-kit migrate", - runs generated migrations against the database
 - db:generate -> db:migrate to properly create a database versioning and populate the database with the schema
+- always use db:push first before db:generate and db:migrate for testing because it will be harder to
+- maintain (as every experiment, creating an extra migration might make you have the need to delete, rebase, fix
 - "db:studio": "drizzle-kit studio", - opens Drizzle Studio to inspect and manage database
 - "db:seed": "node src/db/seed.ts", - populate the database schemas with an initial/dummy/test data (create seed.ts first)
+- To run a another seed (scenario-specific) script, go to package.json and change the source path
 - Make sure that you have drizzle.config.ts and the imports are installed so that there will be no issues
+
 
 Project Initialization
 1. Install necessary packages and dependencies
@@ -112,3 +118,25 @@ Database-Related Commands and Notes with Neon Postgres
   - A singleton cache is a pattern where you keep one shared instance of some cached value for the entire running process,
 - instead of recreating it on every import/reload/call
 - Database pooling is not the same as caching (It is only focused on connection reuse not caching)
+
+
+Security(Authenticate, Authorize)
+- https://api-design-with-node-v5.super.site/7-user-signup-with-password
+- Passwords (using bcrypt): Combine user password + random salt -> add encryption algorithm -> repeat hashing process multiple times (2^n rounds)
+- JWT Tokens are stateless (server [database] does not need to store a session record for them) wherein user info (usually the id, role, scope 
+- DO NOT SEND THE PASSWORD OR ANY SENSITIVE INFO HERE) are signed
+- JWT Tokens cannot be revoked easily (only setting the expiration date-time)
+- API Key - to identify applications and apply quotas or limits
+- JWT Tokens - to authenticate users and sessions and carry authorization claims
+- After user sign up, generate JSON Web Token
+- Hashed passwords should be put in an async function so that it would prevent timing attacks 
+- which measure hashing time to gain insights about the password or system
+
+
+Express vs Django Comparison
+- Express Controller somewhat similar to Django Views
+- Express Router somewhat similar to Django URLs
+- TypeScript somewhat similar to Serializers in Django REST Framework
+- Express Drizzle ORM somewhat similar to Django ORM
+
+

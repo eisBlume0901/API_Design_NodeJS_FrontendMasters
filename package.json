@@ -35,6 +35,8 @@
   },
   "dependencies": {
     "@epic-web/remember": "^1.1.0",
+    "@types/bcrypt": "^6.0.0",
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "custom-env": "^2.0.6",
     "dotenv": "^17.2.3",

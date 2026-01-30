@@ -98,9 +98,7 @@ const seed = () => async() => {
 }
 
 
-// Run only when executed directly (not imported)
-// Used for accidentally database seeding when the module is imported,
-// while still allowing run this file directly to seed
+// This code is used to prevent automatic execution when the file is imported elsewhere
 if (import.meta.url === pathToFileURL(process.argv[1]!).href) {
   seed()()
     .then(() => process.exit(0))
